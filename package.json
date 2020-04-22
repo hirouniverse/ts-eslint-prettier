@@ -1,0 +1,33 @@
+{
+  "name": "ts-eslint-prettier",
+  "version": "1.0.0",
+  "main": "main.js",
+  "license": "MIT",
+  "scripts": {
+    "format": "prettier --write app.ts",
+    "lint": "eslint ./src/app.ts",
+    "formatlint": "eslint src/**/*.{js,ts} --quiet --fix"
+  },
+  "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.29.0",
+    "@typescript-eslint/parser": "^2.29.0",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.1",
+    "eslint-plugin-prettier": "^3.1.3",
+    "prettier": "^2.0.4",
+    "prettier-eslint": "^9.0.1",
+    "prettier-eslint-cli": "^5.0.0",
+    "typescript": "^3.8.3"
+  },
+  "husky": {
+    "hook": {
+      "pre-commit": "tsc --noEmit && lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.{js,ts,tsx}": [
+      "eslint --fix",
+      "git add"
+    ]
+  }
+}
